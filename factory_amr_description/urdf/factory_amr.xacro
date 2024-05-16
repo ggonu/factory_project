@@ -1,0 +1,194 @@
+<?xml version="1.0" ?>
+<robot name="factory_amr" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find factory_amr_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find factory_amr_description)/urdf/factory_amr.trans" />
+<xacro:include filename="$(find factory_amr_description)/urdf/factory_amr.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="-0.002396599951463409 2.104073385822183e-15 0.2688636212913025" rpy="0 0 0"/>
+    <mass value="29.324129559371645"/>
+    <inertia ixx="2.322166" iyy="2.720165" izz="3.470128" ixy="0.0" iyz="0.0" ixz="-0.006447"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find factory_amr_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find factory_amr_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="-1.5713222806367798e-17 -0.03750000000000003 0.0" rpy="0 0 0"/>
+    <mass value="2.1531676424929196"/>
+    <inertia ixx="0.006279" iyy="0.010596" izz="0.006279" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.25 -0.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find factory_amr_description)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 0.25 -0.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find factory_amr_description)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="0.0 0.03749999999999998 1.3877787807814457e-17" rpy="0 0 0"/>
+    <mass value="2.153167642492919"/>
+    <inertia ixx="0.006279" iyy="0.010596" izz="0.006279" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.25 -0.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find factory_amr_description)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.25 -0.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find factory_amr_description)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="revolute_1">
+  <inertial>
+    <origin xyz="0.2776968707983327 -0.2999999999999999 0.08670656285317513" rpy="0 0 0"/>
+    <mass value="128.17276920688812"/>
+    <inertia ixx="9.105387" iyy="8.394601" izz="16.079343" ixy="0.0" iyz="-0.0" ixz="-0.544919"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.325 -0.3 -0.525" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find factory_amr_description)/meshes/revolute_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.325 -0.3 -0.525" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find factory_amr_description)/meshes/revolute_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_1">
+  <inertial>
+    <origin xyz="-7.237528875152536e-18 -1.447505775030507e-17 0.010000000000000009" rpy="0 0 0"/>
+    <mass value="1.2330751165339937"/>
+    <inertia ixx="0.000812" iyy="0.000812" izz="0.001541" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.0 -0.26" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find factory_amr_description)/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.0 -0.26" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find factory_amr_description)/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="imu_1">
+  <inertial>
+    <origin xyz="0.0 0.0 -0.0050000000000000044" rpy="0 0 0"/>
+    <mass value="0.1256"/>
+    <inertia ixx="1.8e-05" iyy="1.8e-05" izz="3.3e-05" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.0 -0.23" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find factory_amr_description)/meshes/imu_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.0 -0.23" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find factory_amr_description)/meshes/imu_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="camera_1">
+  <inertial>
+    <origin xyz="0.010000000000000064 0.0 0.0" rpy="0 0 0"/>
+    <mass value="0.19729201864543888"/>
+    <inertia ixx="3.9e-05" iyy="2.6e-05" izz="2.6e-05" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.39 -0.0 -0.475" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find factory_amr_description)/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.39 -0.0 -0.475" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find factory_amr_description)/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Revolute 7" type="continuous">
+  <origin xyz="0.0 -0.25 0.1" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="Revolute 8" type="continuous">
+  <origin xyz="0.0 0.25 0.1" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Revolute 9" type="revolute">
+  <origin xyz="-0.325 0.3 0.525" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="revolute_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+  <limit upper="0.785398" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Rigid 10" type="fixed">
+  <origin xyz="0.0 0.0 0.26" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="lidar_1"/>
+</joint>
+
+<joint name="Rigid 11" type="fixed">
+  <origin xyz="0.0 0.0 0.23" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="imu_1"/>
+</joint>
+
+<joint name="Rigid 12" type="fixed">
+  <origin xyz="0.39 0.0 0.475" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="camera_1"/>
+</joint>
+
+</robot>
