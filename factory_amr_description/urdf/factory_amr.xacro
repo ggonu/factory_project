@@ -24,8 +24,12 @@
     </geometry>
   </collision>
 </link>
+<gazebo reference="base_link">
+  <material>Gazebo/White</material>
+</gazebo>
 
-<link name="right_wheel_1">
+
+<link name="right_wheel">
   <inertial>
     <origin xyz="-1.5713222806367798e-17 -0.03750000000000003 0.0" rpy="0 0 0"/>
     <mass value="2.1531676424929196"/>
@@ -36,7 +40,7 @@
     <geometry>
       <mesh filename="file://$(find factory_amr_description)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="black"/>
   </visual>
   <collision>
     <origin xyz="-0.0 0.25 -0.1" rpy="0 0 0"/>
@@ -45,8 +49,11 @@
     </geometry>
   </collision>
 </link>
+<gazebo reference="right_wheel">
+  <material>Gazebo/Black</material>
+</gazebo>
 
-<link name="left_wheel_1">
+<link name="left_wheel">
   <inertial>
     <origin xyz="0.0 0.03749999999999998 1.3877787807814457e-17" rpy="0 0 0"/>
     <mass value="2.153167642492919"/>
@@ -57,7 +64,7 @@
     <geometry>
       <mesh filename="file://$(find factory_amr_description)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="black"/>
   </visual>
   <collision>
     <origin xyz="-0.0 -0.25 -0.1" rpy="0 0 0"/>
@@ -66,8 +73,11 @@
     </geometry>
   </collision>
 </link>
+<gazebo reference="left_wheel">
+  <material>Gazebo/Black</material>
+</gazebo>
 
-<link name="revolute_1">
+<link name="luggage">
   <inertial>
     <origin xyz="0.2776968707983327 -0.2999999999999999 0.08670656285317513" rpy="0 0 0"/>
     <mass value="128.17276920688812"/>
@@ -78,7 +88,7 @@
     <geometry>
       <mesh filename="file://$(find factory_amr_description)/meshes/revolute_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="orange"/>
   </visual>
   <collision>
     <origin xyz="0.325 -0.3 -0.525" rpy="0 0 0"/>
@@ -87,8 +97,11 @@
     </geometry>
   </collision>
 </link>
+<gazebo reference="luggage">
+  <material>Gazebo/Orange</material>
+</gazebo>
 
-<link name="lidar_1">
+<link name="laser_frame">
   <inertial>
     <origin xyz="-7.237528875152536e-18 -1.447505775030507e-17 0.010000000000000009" rpy="0 0 0"/>
     <mass value="1.2330751165339937"/>
@@ -99,7 +112,7 @@
     <geometry>
       <mesh filename="file://$(find factory_amr_description)/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="blue"/>
   </visual>
   <collision>
     <origin xyz="-0.0 -0.0 -0.26" rpy="0 0 0"/>
@@ -109,7 +122,7 @@
   </collision>
 </link>
 
-<link name="imu_1">
+<link name="imu">
   <inertial>
     <origin xyz="0.0 0.0 -0.0050000000000000044" rpy="0 0 0"/>
     <mass value="0.1256"/>
@@ -120,7 +133,7 @@
     <geometry>
       <mesh filename="file://$(find factory_amr_description)/meshes/imu_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="red"/>
   </visual>
   <collision>
     <origin xyz="-0.0 -0.0 -0.23" rpy="0 0 0"/>
@@ -129,8 +142,11 @@
     </geometry>
   </collision>
 </link>
+<gazebo reference="imu">
+  <material>Gazebo/Red</material>
+</gazebo>
 
-<link name="camera_1">
+<link name="camera">
   <inertial>
     <origin xyz="0.010000000000000064 0.0 0.0" rpy="0 0 0"/>
     <mass value="0.19729201864543888"/>
@@ -141,7 +157,7 @@
     <geometry>
       <mesh filename="file://$(find factory_amr_description)/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="red"/>
   </visual>
   <collision>
     <origin xyz="-0.39 -0.0 -0.475" rpy="0 0 0"/>
@@ -151,44 +167,106 @@
   </collision>
 </link>
 
-<joint name="Revolute 7" type="continuous">
+<joint name="right_wheel_joint" type="continuous">
   <origin xyz="0.0 -0.25 0.1" rpy="0 0 0"/>
   <parent link="base_link"/>
-  <child link="right_wheel_1"/>
+  <child link="right_wheel"/>
   <axis xyz="0.0 -1.0 0.0"/>
 </joint>
 
-<joint name="Revolute 8" type="continuous">
+<joint name="left_wheel_joint" type="continuous">
   <origin xyz="0.0 0.25 0.1" rpy="0 0 0"/>
   <parent link="base_link"/>
-  <child link="left_wheel_1"/>
+  <child link="left_wheel"/>
   <axis xyz="0.0 1.0 0.0"/>
 </joint>
 
-<joint name="Revolute 9" type="revolute">
+<joint name="luggage_joint" type="revolute">
   <origin xyz="-0.325 0.3 0.525" rpy="0 0 0"/>
   <parent link="base_link"/>
-  <child link="revolute_1"/>
+  <child link="luggage"/>
   <axis xyz="0.0 -1.0 0.0"/>
   <limit upper="0.785398" lower="0.0" effort="100" velocity="100"/>
 </joint>
 
-<joint name="Rigid 10" type="fixed">
+<joint name="laser_joint" type="fixed">
   <origin xyz="0.0 0.0 0.26" rpy="0 0 0"/>
   <parent link="base_link"/>
-  <child link="lidar_1"/>
+  <child link="laser_frame"/>
 </joint>
 
-<joint name="Rigid 11" type="fixed">
+<joint name="imu_joint" type="fixed">
   <origin xyz="0.0 0.0 0.23" rpy="0 0 0"/>
   <parent link="base_link"/>
-  <child link="imu_1"/>
+  <child link="imu"/>
 </joint>
 
-<joint name="Rigid 12" type="fixed">
+<joint name="camera_joint" type="fixed">
   <origin xyz="0.39 0.0 0.475" rpy="0 0 0"/>
   <parent link="base_link"/>
-  <child link="camera_1"/>
+  <child link="camera"/>
 </joint>
+
+<joint name="camera_optical_joint" type="fixed">
+  <origin xyz="0.0 0.0 0.0" rpy="${-pi/2} 0 ${-pi/2}"/>
+  <parent link="camera"/>
+  <child link="camera_optical"/>
+</joint>
+
+<link name="camera_optical" type="fixed"></link>
+
+<gazebo reference="laser_frame">
+  <material>Gazebo/Blue</material>
+  <sensor name="laser" type="ray">
+    <pose> 0 0 0 0 0 0 </pose>
+    <visualize>true</visualize>
+    <update_rate>10</update_rate>
+    <ray>
+      <scan>
+        <horizontal>
+          <samples>360</samples>
+          <resolution>1</resolution>
+          <min_angle>-3.14</min_angle>
+          <max_angle>3.14</max_angle>
+        </horizontal>
+      </scan>
+      <range>
+        <min>0.4</min>
+        <max>12</max>
+      </range>
+    </ray>
+    <plugin name="laser_controller" filename="libgazebo_ros_ray_sensor.so">
+      <ros>
+        <argument>~/out:=scan</argument>
+      </ros>
+      <output_type>sensor_msgs/LaserScan</output_type>
+      <frame_name>laser_frame</frame_name>
+    </plugin>
+  </sensor>
+</gazebo>
+
+<gazebo reference="camera">
+  <material>Gazebo/Red</material>
+  <sensor name="camera" type="camera">
+    <pose> 0 0 0 0 0 0 </pose>
+    <visualize>true</visualize>
+    <update_rate>10</update_rate>
+    <camera>
+      <horizontal_fov>1.089</horizontal_fov>
+      <image>
+        <format>R8G8B8</format>
+        <width>640</width>
+        <height>480</height>
+      </image>
+      <clip>
+        <near>0.05</near>
+        <far>8.0</far>
+      </clip>
+    </camera>
+    <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+      <frame_name>camera_optical</frame_name>
+    </plugin>
+  </sensor>
+</gazebo>
 
 </robot>
