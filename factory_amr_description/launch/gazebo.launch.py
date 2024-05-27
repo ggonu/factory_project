@@ -24,12 +24,6 @@ def generate_launch_description():
             {'robot_description': robot_urdf}
         ]
     )
-    
-    rsp = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([os.path.join(
-            get_package_share_directory('factory_amr_description'), 'launch', 'rsp.launch.py'
-        )]), launch_arguments={'use_sim_time': 'true'}.items()
-    )
 
     joint_state_publisher_node = Node(
         package='joint_state_publisher',
@@ -71,8 +65,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        # robot_state_publisher_node,
-        rsp,
+        robot_state_publisher_node,
         joint_state_publisher_node,
         gazebo_server,
         gazebo_client,

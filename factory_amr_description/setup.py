@@ -20,7 +20,7 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='author',
-    maintainer_email='gogun0928@naver.com',
+    maintainer_email='todo@todo.com',
     description='The ' + package_name + ' package',
     license='TODO: License declaration',
     tests_require=['pytest'],
