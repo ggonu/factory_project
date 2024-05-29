@@ -4,7 +4,7 @@
 <name>factory_amr_description</name>
   <version>0.0.0</version>
 <description>The factory_amr_description package</description>
-  <maintainer email="todo@todo.com">author</maintainer>
+  <maintainer email="gogun0928@naver.com">go</maintainer>
   <license>TODO: License declaration</license>
 
   <depend>xacro</depend>
@@ -12,6 +12,7 @@
   <depend>robot_state_publisher</depend>
   <depend>joint_state_publisher</depend>
   <depend>joint_state_publisher_gui</depend>
+  <depend>gazebo_ros_pkgs</depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
